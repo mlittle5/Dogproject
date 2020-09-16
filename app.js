@@ -14,7 +14,7 @@ function displayResults(responseJson) {
     console.log(responseJson);
     //create image zones
     //replace the existing images with the new ones
-    for (let i=0; i<responseJson.message.length; i++) {
+    for (let i=0; i<responseJson.length; i++) {
         $('#image-contain').html(createImageHolder[i]);
         $('.results-img').replaceWith(
       `<img src="${responseJson.message[i]}" class="results-img">`
