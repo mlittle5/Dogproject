@@ -1,37 +1,34 @@
 'use strict';
 
-function getDogImages(numberOfDogs) {
-  fetch(`https://dog.ceo/api/breeds/image/random/${numberOfDogs}`)
+// const STORE = {
+//     number: 0,
+//     url: 
+// };
+
+function getDogImage(dogs) {
+    let dogNumber = $('input[type=number][name=quantity]').val('');
+  fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
     .then(response => response.json())
-    .then(responseJson => displayResults(responseJson))
+    .then(responseJson => 
+      displayResults(responseJson))
     .catch(error => alert('Something went wrong. Try again later.'));
 }
-// function createImageZones(numberOfDogs) {
-//     let numberOfDogs = $('input[type=number][name=quantity]').val();
 
-// }
 function displayResults(responseJson) {
-    console.log(responseJson);
-    //create image zones
-    //replace the existing images with the new ones
-    for (let i=0; i<responseJson.length; i++) {
-        $('#image-contain').html(createImageHolder[i]);
-        $('.results-img').replaceWith(
-      `<img src="${responseJson.message[i]}" class="results-img">`
-    )
-    //display the results section
-    $('.results').removeClass('hidden'); 
-    console.log("dogs") 
-    }
-    
-  }
-  
-  function watchForm() {
+  console.log(responseJson);
+  //replace the existing image with the new one
+  $('.results-img').replaceWith(
+    `<img src="${responseJson.message}" class="results-img">`
+  )
+  //display the results section
+  $('.results').removeClass('hidden');
+}
+
+function watchForm() {
   $('form').submit(event => {
-    let numberOfDogs = $('input[type=number][name=quantity]').val();
     event.preventDefault();
-    getDogImages(numberOfDogs);
-    // console.log(numberOfDogs);
+    let dogNumber = $('input[type=number][name=quantity]').val('');
+    getDogImage(dogNumber);
   });
 }
 
@@ -39,4 +36,3 @@ $(function() {
   console.log('App loaded! Waiting for submit!');
   watchForm();
 });
-
