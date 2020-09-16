@@ -5,8 +5,9 @@
 //     url: 
 // };
 
-function getDogImage(dogs) {
-    let dogNumber = $('input[type=number][name=quantity]').val('');
+function getDogImage() {
+    let dogNumber = $('input[type=number][name=quantity]').val();
+    console.log(dogNumber);
   fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
     .then(response => response.json())
     .then(responseJson => 
