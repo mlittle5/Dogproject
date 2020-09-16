@@ -3,15 +3,8 @@
 function getDogImages(numberOfDogs) {
   fetch(`https://dog.ceo/api/breeds/image/random/${numberOfDogs}`)
     .then(response => response.json())
-    .then(responseJson => displayResults(responseJson));
-    // .catch(error => alert('Something is wrong... try again later.'));
-}
-function createImageHolder(i) {
-    let htmlText= `
-    <h1>djkafsbdjbsaf</h1>
-    <img class="results-img" alt="placeholder">
-    `
-    return htmlText *= i;
+    .then(responseJson => displayResults(responseJson))
+    .catch(error => alert('Something went wrong. Try again later.'));
 }
 // function createImageZones(numberOfDogs) {
 //     let numberOfDogs = $('input[type=number][name=quantity]').val();
