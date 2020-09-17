@@ -6,13 +6,13 @@
 // };
 
 function getDogImage() {
-    let dogNumber = $('input[type=number][name=quantity]').val();
-    console.log(dogNumber);
+    dogNumber = $('input[type=number][name=quantity]').val('')
   fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
     .then(response => response.json())
     .then(responseJson => 
       displayResults(responseJson))
     .catch(error => alert('Something went wrong. Try again later.'));
+    console.log(dogNumber);
 }
 
 function displayResults(responseJson) {
@@ -28,8 +28,8 @@ function displayResults(responseJson) {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    let dogNumber = $('input[type=number][name=quantity]').val('');
-    getDogImage(dogNumber);
+    // let dogNumber = $('input[type=number][name=quantity]').val('');
+    getDogImage();
   });
 }
 
